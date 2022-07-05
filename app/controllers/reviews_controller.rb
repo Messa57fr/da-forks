@@ -5,9 +5,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.reservation = @reservation
     if @review.save
-      redirect_to restaurant_path(@reservation.restaurant)
+      redirect_to restaurant_path(@reservation.restaurant), notice: 'Your review has been added'
     else
-      render "reservation/show"
+      render "reservation/show", warning: 'Your review has not been added'
     end
   end
 

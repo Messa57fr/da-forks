@@ -6,9 +6,9 @@
       <p><%=restaurant.address%></p>
       <%= link_to toggle_favorite_restaurant_path(restaurant), remote: true, method: :post do %>
         <% if current_user.favorited?(restaurant) %>
-          <i class="fa-solid fa-heart" target="_blank"></i>
+          <i class="fa-solid fa-heart"></i>
         <% else %>
-            <i class="fa-regular fa-heart" target="_blank"></i>
+            <i class="fa-regular fa-heart"></i>
         <% end %>
       <% end %>
     </div>
