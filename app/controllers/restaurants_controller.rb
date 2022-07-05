@@ -2,10 +2,8 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :destroy, :edit, :update, :toggle_favorite]
 
   def index
-    # @favorites = []
     @restaurants = Restaurant.all
     @restaurants.each do |restaurant|
-      # @favorites << Favorite.where(restaurant: restaurant, user: current_user)
     end
   end
 
@@ -23,7 +21,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_path(@restaurant), notice: 'Restaurant was successfully created'
     else
       render :new
     end
@@ -31,7 +29,7 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_path
+    redirect_to restaurants_path, alert: 'Restaurant was successfully deleted'
   end
 
   def edit
@@ -40,12 +38,16 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant.update(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    redirect_to restaurant_path(@restaurant), notice: 'Restaurant was successfully updated'
   end
 
   def toggle_favorite
     current_user.favorited?(@restaurant) ? current_user.unfavorite(@restaurant) : current_user.favorite(@restaurant)
-    redirect_to restaurants_path
+    if current_user.favorited?(@restaurant)
+      redirect_to restaurants_path, notice: "Added to your favorites"
+    else
+      redirect_to restaurants_path, notice: "Removed to your favorites"
+    end
   end
 
   private
