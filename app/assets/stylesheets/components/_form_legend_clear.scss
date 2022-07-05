@@ -8,3 +8,17 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.form-wrapper {
+  border-radius: 3px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgb(230,230,230);
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}

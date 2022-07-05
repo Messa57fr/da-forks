@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
     @reservation.restaurant = @restaurant
-    if @reservation.save && @reservation.date > Date.today
+    if @reservation.save && @reservation.date >= Date.today
       render :show
     else
       redirect_to restaurant_path(@restaurant), alert: 'Your reservation was not successful'

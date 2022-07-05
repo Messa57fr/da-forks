@@ -7,8 +7,8 @@
         <h2><%=@restaurant.name%></h2>
         <p><%=@restaurant.description%></p>
       </div>
-      <h2 class="card-trip-pricing">444</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <i class="fa-light fa-user-chef"></i>
+      <h2 class="card-trip-pricing"><%=@restaurant.category.name%></h2>
     </div>
     <div class="card-trip-buttons">
       <%= link_to "Edit", edit_restaurant_path(@restaurant), class:"btn btn-dark btn-delete text-white justify-content-center"%>
@@ -16,14 +16,15 @@
     </div>
   </div>
 
-  <div class="form-wrapper mt-3 mb-4">
-    <%= simple_form_for [@restaurant, @reservation] do |f| %>
-      <%= f.input :guest_number, required: true %>
-      <%= f.input :date, start_year: Date.today.year%>
-      <%= f.button :submit, "Reservation", class: "w-100 btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center" %>
-    <% end %>
+  <div class="form-container">
+    <div class="form-wrapper mt-3 mb-4 w-100">
+      <%= simple_form_for [@restaurant, @reservation] do |f| %>
+        <%= f.input :guest_number, required: true %>
+        <%= f.input :date, start_year: Date.today.year%>
+        <%= f.button :submit, "Reservation", class: "w-100 btn btn-warning btn-delete text-white mx-auto d-flex justify-content-center" %>
+      <% end %>
+    </div>
   </div>
-
   <p>
   <% if @average_rating.nil? %>
     Pas encore de reviews

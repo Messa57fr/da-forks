@@ -10,7 +10,7 @@
         <p>Date: <%=@reservation.date%></p>
       </div>
     </div>
-      <%= link_to "Back to Restaurants", restaurants_path, class:"btn btn-danger btn-delete text-white mx-auto d-flex justify-content-center"%>
+      <%= link_to "Back to Restaurants", restaurants_path, class:"btn btn-warning btn-delete text-white mx-auto d-flex justify-content-center"%>
   </div>
 
   <div class="review">
@@ -19,7 +19,7 @@
       <%= f.input :content %>
       <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
                           include_blank: false %>
-      <%= f.submit class: "btn btn-primary", value: "Valider" %>
+      <%= f.submit class: "btn btn-dark", value: "Valider" %>
     <% end %>
   </div>
 </div>
